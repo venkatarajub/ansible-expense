@@ -12,20 +12,20 @@
     - frontend
 
   tasks:
-  # - name: install boto3 and botocore to ansible
-  #   ansible.builtin.pip:
-  #     name:
-  #     - boto3
-  #     - botocore
-  #     executable: pip3.9
+  - name: install boto3 and botocore to ansible
+    ansible.builtin.pip:
+      name:
+      - boto3
+      - botocore
+      executable: pip3.9
 
-  - name: install ec2 instances
+  - name: create ec2 instances
     amazon.aws.ec2_instance:
       name: "{{ item }}"
       vpc_subnet_id: "{{ subnet_id }}"
       security_group: "{{ sg_id }}"
       instance_type: "t2.micro"
       image_id: "{{ ami_id }}"
-    loop: "{{ instance }}"
+    loop: "{{ instances }}"
     register: ec2_instances
       
