@@ -6,6 +6,12 @@
     login_host: "mysql.vensa.online"
 
   tasks:
+  - name: install pymysql  to ansible
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      executable: pip3.9
+
   - name: install mysql server
     ansible.builtin.package:
       name: 
@@ -17,12 +23,6 @@
       name: mysqld
       state: started
       enabled: true
-
-  # - name: install PyMySQL to ansible
-  #   ansible.builtin.package:
-  #     name:
-  #     - pyMySQL
-  #     executable: pip3.9
 
   - name: connect to mysql server
     community.mysql.mysql_info:
