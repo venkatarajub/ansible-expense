@@ -19,10 +19,10 @@
       path: /usr/share/nginx/html/
       state: absent
   
-  - name: remove html dir
+  - name: create html dir
     ansible.builtin.file:
       path: /usr/share/nginx/html/
-      state: present
+      state: directory
 
   - name: download the frontend code
     ansible.builtin.get_url:
