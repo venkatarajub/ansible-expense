@@ -18,4 +18,8 @@
       state: started
       enabled: true
 
-  
+  - name: install PyMySQL to ansible
+    ansible.builtin.package:
+      name:
+      - pyMySQL
+      executable: pip3.9
