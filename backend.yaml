@@ -33,6 +33,16 @@
 
   - name: unarchive the application code
     ansible.builtin.unarchive:
-      src: /tmp/backend.zip
+      src: /tmp/backend.zip  #by default ansible think this is in ansible server trying to push to node
       dest: /app
-      remote_src: yes
+      remote_src: yes 
+
+  - name: download dependencies
+    ansible.builtin.command: npm install
+    args:
+      chdir: /app
+  #Change the working directory to somedir/ and run the command can achived by passing "args" keyword
+  #'args' is a task keyword, passed at the same level as the module
+
+
+    
