@@ -61,7 +61,7 @@
 
   - name: import mysql data
     community.mysql.mysql_db:
-      login_user: roor
+      login_user: root
       login_password: "{{ mysql_password }}"
       login_host: "{{ login_host }}"
       target: "/app/schema/backend.sql"
