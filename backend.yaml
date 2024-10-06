@@ -68,5 +68,14 @@
       state: "import"
       name: all
 
+  - name: daemon-reload #Load the service 
+    ansible.builtin.systemd_service:
+      state: restarted
+      daemon_reload: true
+      name: backend
+
+#Restart service in all cases, also issue daemon-reload to pick up config changes
+
+
 
     
