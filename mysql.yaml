@@ -18,8 +18,4 @@
       state: started
       enabled: true
 
-  - name: connected to mysql server
-    community.mysql.mysql_info:
-      login_user: root
-      login_password: "{{ mysql_password }}"
-      login_host: "{{ login_host }}"
+  
