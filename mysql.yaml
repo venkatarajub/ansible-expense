@@ -23,3 +23,9 @@
   #     name:
   #     - pyMySQL
   #     executable: pip3.9
+
+  - name: connect to mysql server
+    community.mysql.mysql_info:
+      login_user: roor
+      login_password: "{{ mysql_password }}"
+      login_host: "{{ login_host }}"
