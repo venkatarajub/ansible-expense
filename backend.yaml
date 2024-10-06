@@ -1,6 +1,10 @@
 - name: configure backend
   hosts: backend
   become: yes
+  vars:
+    mysql_password: "ExpenseApp@1"
+    login_host: "mysql.vensa.online"
+
 
   tasks:
   - name: disable available nodejs
@@ -43,6 +47,20 @@
       chdir: /app
   #Change the working directory to somedir/ and run the command can achived by passing "args" keyword
   #'args' is a task keyword, passed at the same level as the module
+
+  - name: copy backend service
+    ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+
+  - name: import mysql data
+    community.mysql.mysql_db:
+      login_user: roor
+      login_password: "{{ mysql_password }}"
+      login_host: "{{ login_host }}"
+      target: "/app/schema/backend.sql"
+      state: "import"
+      name: all
 
 
     
